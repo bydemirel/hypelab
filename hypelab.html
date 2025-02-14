@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HypeLab - Özel Tasarım T-Shirtler</title>
+    <!-- AOS kütüphanesi -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        header {
+            background-color: #000;
+            color: #39ff14; /* Neon yeşil */
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 2px solid #39ff14;
+            box-shadow: 0 0 10px #39ff14;
+        }
+
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('AnimeStore.webp');
+            height: 80vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #39ff14;
+            text-shadow: 0 0 10px #39ff14;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            background-color: transparent;
+            color: #ffcc00; /* Neon sarı */
+            padding: 1rem 2rem;
+            border: 2px solid #ffcc00;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-shadow: 0 0 5px #ffcc00;
+            box-shadow: 0 0 10px #ffcc00;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background-color: #ffcc00;
+            color: #000;
+            box-shadow: 0 0 20px #ffcc00;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            text-align: center;
+            background-color: #000;
+            color: #39ff14;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            padding: 1rem;
+            border: 1px solid #39ff14;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
+        }
+
+        .feature-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .feature-item:hover::after {
+            left: 100%;
+        }
+
+        footer {
+            background-color: #000;
+            color: #ffcc00;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            border-top: 2px solid #ffcc00;
+            box-shadow: 0 0 10px #ffcc00;
+        }
+
+        .products {
+            padding: 4rem 2rem;
+            background-color: #000;
+            color: #39ff14;
+            text-align: center;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            padding: 0 2rem;
+        }
+
+        .product-card {
+            background-color: #111;
+            border: 1px solid #39ff14;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-price {
+            color: #ffcc00;
+            font-size: 1.5rem;
+            margin: 0.5rem 0;
+            text-shadow: 0 0 5px #ffcc00;
+        }
+
+        .newsletter {
+            padding: 4rem 2rem;
+            background-color: #111;
+            text-align: center;
+            color: #39ff14;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .newsletter-input {
+            width: 70%;
+            padding: 0.8rem;
+            border: 2px solid #39ff14;
+            background-color: #000;
+            color: #39ff14;
+            border-radius: 5px;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+            outline: none;
+        }
+
+        .newsletter-button {
+            background-color: #39ff14;
+            color: #000;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .newsletter-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 data-aos="fade-down">HypeLab</h1>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Tarzını HypeLab ile Yansıt</h1>
+            <p>Özel tasarım t-shirtlerimizle stilinizi bir üst seviyeye taşıyın</p>
+            <button class="cta-button">Şimdi Alışveriş Yap</button>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2 data-aos="fade-up">Neden HypeLab?</h2>
+        <div class="feature-grid">
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                <h3>%100 Pamuk</h3>
+                <p>En kaliteli kumaşlarla üretilen t-shirtler</p>
+            </div>
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                <h3>Özel Tasarımlar</h3>
+                <p>Benzersiz ve trend tasarımlar</p>
+            </div>
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                <h3>Hızlı Kargo</h3>
+                <p>2-3 iş günü içinde teslimat</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="products">
+        <h2 data-aos="fade-up">En Yeni Koleksiyonumuz</h2>
+        <div class="product-grid">
+            <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="tshirt.webp" alt="T-shirt Tasarım 1" class="product-image">
+                <div class="product-info">
+                    <h3>Neon Dreams T-shirt</h3>
+                    <p class="product-price">₺299.99</p>
+                    <button class="cta-button">Sepete Ekle</button>
+                </div>
+            </div>
+            <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="tshirt.webp" alt="T-shirt Tasarım 2" class="product-image">
+                <div class="product-info">
+                    <h3>Urban Vibes T-shirt</h3>
+                    <p class="product-price">₺279.99</p>
+                    <button class="cta-button">Sepete Ekle</button>
+                </div>
+            </div>
+            <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="tshirt.webp" alt="T-shirt Tasarım 3" class="product-image">
+                <div class="product-info">
+                    <h3>Cyber Punk T-shirt</h3>
+                    <p class="product-price">₺329.99</p>
+                    <button class="cta-button">Sepete Ekle</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter" data-aos="fade-up">
+        <h2>Yeni Tasarımlardan Haberdar Ol</h2>
+        <p>En yeni koleksiyonlarımız ve özel indirimler için abone ol!</p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="E-posta adresiniz" class="newsletter-input">
+            <button class="newsletter-button">Abone Ol</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 HypeLab. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+    </script>
+</body>
+</html>
