@@ -16,11 +16,22 @@
 
         header {
             background-color: #000;
-            color: #39ff14; /* Neon yeşil */
-            padding: 1rem;
+            padding: 0.5rem 1rem;
             text-align: center;
             border-bottom: 2px solid #39ff14;
             box-shadow: 0 0 10px #39ff14;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;  /* Header yüksekliğini artırdım */
+        }
+
+        .header-logo {
+            height: 160px;  /* Logo yüksekliğini artırdım */
+            width: auto;
+            object-fit: contain;
+            max-width: 90%;  /* Kenarlardan biraz boşluk bırakmak için */
+            padding: 0.5rem;
         }
 
         .hero {
@@ -214,7 +225,7 @@
 </head>
 <body>
     <header>
-        <h1 data-aos="fade-down">HypeLab</h1>
+        <img src="hypelablogo4-removebg-preview.png" alt="HypeLab Logo" class="header-logo" data-aos="fade-down">
     </header>
 
     <section class="hero">
