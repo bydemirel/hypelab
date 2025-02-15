@@ -1,0 +1,57 @@
+/* Mobil cihazlar için medya sorguları */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  /* Header düzenlemeleri */
+  .header {
+    padding: 10px;
+  }
+
+  /* Ana içerik düzenlemeleri */
+  .main-content {
+    flex-direction: column;
+  }
+
+  /* Resim boyutlandırma */
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Buton düzenlemeleri */
+  .button {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  /* Metin boyutları */
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+/* Daha küçük mobil cihazlar için ek düzenlemeler */
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+} 
